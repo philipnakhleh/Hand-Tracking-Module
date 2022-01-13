@@ -40,19 +40,19 @@ class handDetector():
         return (point1[1] - point2[1])*(point1[1] - point2[1]) + (point1[2] - point2[2])*(point1[2] - point2[2])
 
     def getFingers(self,img,handNo = 0):
-        fingers = [0,0,0,0,0]
+        fingers = [1,1,1,1,1]
         lmList = self.findPosition(img,handNo= handNo)
         try:
-            if self.distance(lmList[0],lmList[3]) < self.distance(lmList[0],lmList[4]) and lmList[3][1] > lmList[2][1]:
-                fingers[0] = 1
-            if self.distance(lmList[0], lmList[6]) < self.distance(lmList[8], lmList[0]):
-                fingers[1] = 1
-            if self.distance(lmList[0], lmList[10]) < self.distance(lmList[0], lmList[12]):
-                fingers[2] = 1
-            if self.distance(lmList[0], lmList[14]) < self.distance(lmList[0], lmList[16]):
-                fingers[3] = 1
-            if self.distance(lmList[0], lmList[18]) < self.distance(lmList[0], lmList[20]):
-                fingers[4] = 1
+            if abs(lmList[3][1]-lmList[0][1]) < (lmList[2][1]-lmList[0][1]) or self.distance(lmList[0], lmList[2]) > self.distance(lmList[4], lmList[0]):
+                fingers[0] = 0
+            if self.distance(lmList[0], lmList[6]) > self.distance(lmList[8], lmList[0]):
+                fingers[1] = 0
+            if self.distance(lmList[0], lmList[10]) > self.distance(lmList[0], lmList[12]):
+                fingers[2] = 0
+            if self.distance(lmList[0], lmList[14]) > self.distance(lmList[0], lmList[16]):
+                fingers[3] = 0
+            if self.distance(lmList[0], lmList[18]) > self.distance(lmList[0], lmList[20]):
+                fingers[4] = 0
         except:
             return "NO Hand Found"
         return fingers
