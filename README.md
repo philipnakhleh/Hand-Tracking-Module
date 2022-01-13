@@ -35,4 +35,7 @@ while True:
 ## Support
 if you are having issues let me know
 
-###Thank You
+## License
+MIT license.
+
+### Thank You
