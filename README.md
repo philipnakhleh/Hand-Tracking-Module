@@ -13,12 +13,12 @@ I'm using python 3.7.9, opencv 4.5.5.62 and mediapipe 0.8.9.1
 
 ## Usage
 import libraries:
-```
+```python
 import cv2 as cv
 import HandTrackingModule as hd
 ```
 to use the library:
-```
+```python
 cap = cv.VideoCapture(1)
 detector = hd.handDetector()
 while True:
