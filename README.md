@@ -3,8 +3,8 @@
 I'm using python 3.7.9, opencv 4.5.5.62 and mediapipe 0.8.9.1
 
 ## Requirements
-opencv
-mediapipe
+* opencv
+* mediapipe
 
 ## Features
 * Tracking Hands
@@ -24,8 +24,11 @@ detector = hd.handDetector()
 while True:
   sucess, img = cap.read()
   img = detector.findHands(img)
-  fingers = detector.getFingers(img)
-  print(fingers)
+  try:
+    fingers = detector.getFingers(img)
+    print(fingers)
+  except Exception as ex:
+    Print(f'An Exception Occurred: {ex}')
   cv.imshow('image', img)
   k = cv.waitKey(1)
   if k == 27:
