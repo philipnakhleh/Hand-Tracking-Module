@@ -54,20 +54,22 @@ class handDetector():
             if self.distance(lmList[0], lmList[18]) > self.distance(lmList[0], lmList[20]):
                 fingers[4] = 0
         except:
-            return "NO Hand Found"
+            raise Exception("NO Hand Found")
         return fingers
 
 
 def main():
     pTime = 0
-    cTime = 0
     cap = cv.VideoCapture(1)
     detector = handDetector()
     while True:
-        sucess, img = cap.read()
+        success, img = cap.read()
         img = detector.findHands(img)
-        fingers = detector.getFingers(img)
-        print(fingers)
+        try:
+            fingers = detector.getFingers(img)
+            print(fingers)
+        except Exception as ex:
+            print(f'An Exception Occurred: {ex}')
         cTime = time.time()
         fps = 1 / (cTime - pTime)
         pTime = cTime
