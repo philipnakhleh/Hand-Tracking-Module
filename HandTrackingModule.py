@@ -78,6 +78,7 @@ def main():
         cv.imshow('image', img)
         k = cv.waitKey(1)
         if k == 27:
+            cv.destroyAllWindows()
             break
 
 
